@@ -1,0 +1,8 @@
+#c++
+*.exe
+
+#VS code Files
+.vscode/
+
+#Java
+*.class
