@@ -3,6 +3,7 @@
 
 #个人文件
 *.txt
+js/
 
 #Java start
 #   编译类文件
