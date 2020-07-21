@@ -1,10 +1,11 @@
-//P5705
+//P5706
 #include<bits/stdc++.h>
 using namespace std;
-char a,b,c,d,e;
+int n;
+double t;
 int main()
 {
-	scanf("%c%c%c.%c",&a,&b,&c,&d);
-	printf("%c.%c%c%c",d,c,b,a);
+	cin>>t>>n;
+	printf("%.3lf\n%d",t/n,n*2);
 	return 0;
 }
