@@ -1,8 +1,66 @@
-#c++
-*.exe
-
-#VS code Files
+#VS code 配置文件
 .vscode/
 
-#Java
+#个人文件
+*.txt
+
+#Java start
+#   编译类文件
 *.class
+
+#   日志文件
+*.log
+
+#   BlueJ文件
+*.ctxt
+
+#   Java移动工具 (J2ME)
+.mtj.tmp/
+
+#   包文件 #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+#   虚拟机崩溃日志, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+#Java over
+
+#C++ start
+#   Prerequisites
+*.d
+
+#   编译目标文件
+*.slo
+*.lo
+*.o
+*.obj
+
+#   预编译头
+*.gch
+*.pch
+
+#   动态编译库
+*.so
+*.dylib
+*.dll
+
+#   Fortran 模块文件
+*.mod
+*.smod
+
+#   静态编译库
+*.lai
+*.la
+*.a
+*.lib
+
+#   可执行文件
+*.exe
+*.out
+*.app
+#C++ over
