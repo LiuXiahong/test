@@ -1,81 +1,37 @@
-//P2433
-#include <bits/stdc++.h>
+//P2419 [USACO08JAN]Cow Contest S
+#include<bits/stdc++.h>
 using namespace std;
-int n;
+int a,b,n,m,t,f[101][101];
+int ans;
 int main()
 {
-	cin >> n;
-	if (n == 1)
+    cin>>n>>m;
+    for(int i=1;i<=m;i++)
 	{
-		cout << "I love Luogu!" << endl;
-	}
-	if (n == 2)
+        cin>>a>>b;
+        f[a][b]=1;
+    }
+    for(int k=1;k<=n;k++)
 	{
-		cout << 6 << " " << 4 << endl;
-	}
-	if (n == 3)
-	{
-		cout << 3 << endl
-			 << 12 << endl
-			 << 2 << endl;
-	}
-	if (n == 4)
-	{
-		cout << 166.666667 << endl;
-	}
-	if (n == 5)
-	{
-		cout << 15 << endl;
-	}
-	if (n == 6)
-	{
-		cout << 10.816653826391967879357663802411 << endl;
-	}
-	if (n == 7)
-	{
-		cout << 110 << endl
-			 << 90 << endl
-			 << 0 << endl;
-	}
-	if (n == 8)
-	{
-		cout << 31.41593 << endl
-			 << 78.539825 << endl
-			 << 523.59883333333333333333333333333 << endl;
-	}
-	if (n == 9)
-	{
-		cout << 22 << endl;
-	}
-	if (n == 10)
-	{
-		cout << 9 << endl;
-	}
-	if (n == 11)
-	{
-		cout << 33.3333333333 << endl;
-	}
-	if (n == 12)
-	{
-		cout << 13 << endl
-			 << 'R' << endl;
-	}
-	if (n == 13)
-	{
-		cout << 16 << endl;
-	}
-	if (n == 14)
-	{
-		for (int i = 1; i <= 110; i++)
+        for(int i=1;i<=n;i++)
 		{
-			int s = 120 - i;
-			int ans = s * i;
-			if (ans == 3500)
+            for(int j=1;j<=n;j++)
 			{
-				cout << i << endl;
-				break;
+              f[i][j]=f[i][j]|f[i][k]&f[k][j];
 			}
 		}
 	}
-	return 0;
+    for(int i=1;i<=n;i++)
+	{
+        t=1;
+        for(int j=1;j<=n;j++)
+        if(i==j)
+			continue;
+		else
+		{
+			t=t&(f[i][j]|f[j][i]);
+		} 
+		ans+=t;
+    }
+    
 }
