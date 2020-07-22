@@ -59,14 +59,16 @@ int main()
 	return 0;
 }
 */
-//P5715	【深基3.例8】三位数排序
-#include<bits/stdc++.h>
+//P5716 【深基3.例9】月份天数
+#include<bits/stdc++.h>  //文件头
 using namespace std;
-int a[3];
+
+int year,month;   //定义年和月
+int a[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};  //定义月份对应天数数组
 int main()
 {
-	cin>>a[0]>>a[1]>>a[2];
-	sort(a,a+3);
-	cout<<a[0]<<' '<<a[1]<<' '<<a[2];
-	return 0;
+    cin>>year>>month;
+    if((year%4==0&&year%100!=0)||year%400==0)a[2]=29;   //判断闰年
+    cout<<a[month];
+    return 0;
 }
