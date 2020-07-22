@@ -1,11 +1,13 @@
-//P2181 对角线
+//P5710 【深基3.例2】数的性质
 #include<bits/stdc++.h>
 using namespace std;
-unsigned long long n,ans;
+int n;
+bool a,b;
 int main()
 {
-    scanf("%lld",&n);
-    ans=n * (n-1) / 2 * (n-2) / 3 * (n-3) / 4;
-    printf("%lld\n",ans);
-    return 0;
+	cin>>n;
+	a=(n%2==0);
+	b=n>4&&n<=12;
+	cout << (a && b) << " " << (a || b) << " " << ((a == 1 && b == 0) || (a == 0 && b == 1)) << " " << (!a && !b) << endl;
+	return 0;
 }
