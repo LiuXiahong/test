@@ -1,20 +1,13 @@
-//P1888 三角函数
+//P4414 [COCI2006-2007#2] ABC
 #include<bits/stdc++.h>
 using namespace std;
-long long a,b,c;
+int a[3];
+char A,B,C;
 int main()
 {
-    cin>>a>>b>>c;
-    if(a==6&&b==8&&c==10) 
-    {
-    	cout<<"3/5";
-    	return 0;
-	}
-    if(a>b)
-		swap(a,b);
-    if(a>c)
-		swap(a,c);
-    if(b>c)
-		swap(b,c);
-    cout<<a<<"/"<<c;
-} 
+    cin>>a[0]>>a[1]>>a[2];
+    cin>>A>>B>>C;
+    sort(a,a+3);
+    cout<<a[A-'A']<<" "<<a[B-'A']<<" "<<a[C-'A'];//字母是大写，减去‘A’后得到0（A）,1（B）,2（C）。
+    return 0;
+}
