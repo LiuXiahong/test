@@ -1,13 +1,15 @@
-//P4414 [COCI2006-2007#2] ABC
+//P5720 ¡¾Éî»ù4.Àý4¡¿Ò»³ßÖ®é¢
 #include<bits/stdc++.h>
 using namespace std;
-int a[3];
-char A,B,C;
+int n,i;
 int main()
 {
-    cin>>a[0]>>a[1]>>a[2];
-    cin>>A>>B>>C;
-    sort(a,a+3);
-    cout<<a[A-'A']<<" "<<a[B-'A']<<" "<<a[C-'A'];//å­—æ¯æ˜¯å¤§å†™ï¼Œå‡åŽ»â€˜Aâ€™åŽå¾—åˆ°0ï¼ˆAï¼‰,1ï¼ˆBï¼‰,2ï¼ˆCï¼‰ã€‚
-    return 0;
+	cin>>n;
+	while(n!=1)
+	{
+		i++;
+		n/=2;
+	}
+	cout<<i+1;
+	return 0;
 }
