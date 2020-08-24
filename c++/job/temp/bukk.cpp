@@ -1,47 +1,34 @@
-//P5723 【深基4.例13】质数口袋
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-int n, t;
-long long sum = 0;
-int f(int x)
-{
-	for (int i = 2; i * i <= x; i++)
-	{
-		if (x % i == 0)
-		{
-			return 0;
-		}
-	}
-	return 1;
-}
+int dix[101],f[101][5001];
+int n,m,sum,ans;
 int main()
 {
-	scanf("%d", &n);
-	if (n < 2)
-	{
-		printf("0\n");
-		return 0;
-	}
-	else if (n == 2)
-	{
-		printf("2\n1\n");
-		return 0;
-	}
-	for (int i = 2; i <= n; i++)
-	{
-		if (i % 2 == 0 && i != 2)
-			continue;
-		if (sum + i > n)
-		{
-			printf("%d\n", t);
-			return 0;
-		}
-		if (f(i))
-		{
-			printf("%d\n", i);
-			sum += i;
-			t++;
-		}
-	}
-	return 0;
+    cin>>n;
+    for(int i=1;i<=n;i++)
+    {
+        cin>>dix[i];
+        ans+=dix[i];
+    }
+    sum=ans/2;
+    m=n/2;
+    f[0][0]=1;
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=min(i,m);j>=1;j--)
+        {
+            for(int k=sum;k>=dix[i];k--)
+            {
+                f[j][k]=f[j][k]||f[j-1][k-dix[i]];
+            }
+        }
+    }
+    for(int i=sum;i;i--)
+    {
+        if(f[m][i])
+        {
+            cout<<i;
+            return 0;
+        }
+    }
 }
