@@ -1,71 +1,53 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int n,m,t,sum,ans,wt,maxn;
-char mapn[100][100];
-int book[100][100],dix[1000];
-int tx,ty;
-int dx[8]={0,1,0,-1,1,-1,1,-1},dy[8]={1,0,-1,0,1,-1,-1,1};
-/*
-5 7
-*......
-..**..*
-.*...*.
-...*...
-....*..
-*/
-void dfs(int x,int y)
+int n, m, user_map[1505][1505], sum, xx[1505 * 1505], mann;
+int dnext[8][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
+char c;
+void dfs(int x, int y)
 {
-    mapn[x][y]='.';
-    for(int i=0;i<8;i++)
+     user_map[x][y] = 0;
+    sum++;
+    for (int i = 0; i < 8; i++)
     {
-        tx=x+dx[i];
-        ty=y+dy[i];
-        if(tx<0||tx>=n||ty<0||ty>=m)
-        {
-            continue;
-        }
-        if(mapn[tx][ty]=='*'&&book[tx][ty]==0)
-        {
-            ans++;
-            book[tx][ty]=1;
-            dfs(tx,ty);
-            book[tx][ty]=0;
-        }
+        int xx = x + dnext[i][0], yy = y + dnext[i][1];
+        if (xx > 0 && xx <= n && yy > 0 && yy <= m &&  user_map[xx][yy])
+            dfs(xx, yy);
     }
-    return;
 }
 int main()
 {
-    cin>>n>>m;
-    for(int i=0;i<n;i++)
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++)
     {
-        for(int j=0;j<m;j++)
+        for (int j = 1; j <= m; j++)
         {
-            cin>>mapn[i][j];
+            cin >> c;
+            if (c == '.')
+                 user_map[i][j] = 0;
+            if (c == '*')
+                 user_map[i][j] = 1;
         }
     }
-    for(int i=0;i<n;i++)
+    for (int i = 1; i <= n; i++)
     {
-        for(int j=0;j<m;j++)
+        for (int j = 1; j <= m; j++)
         {
-            if(mapn[i][j]=='*')
+            if ( user_map[i][j] == 1)
             {
-                ans=0;
-                sum++;
-                book[i][j]=1;
-                dfs(i,j);
-                dix[t++]=ans;
-                maxn=max(maxn,ans);
+                dfs(i, j);
+                xx[sum]++;
+                if (sum * xx[sum] > mann)
+                    mann = sum * xx[sum];
+                sum = 0;
             }
         }
     }
-    for(int i=0;i<t;i++)
+    int ans = 0;
+    for (int i = 0; i <= n * m; i++)
     {
-        if(dix[i]==maxn)
-        {
-            wt+=dix[i];
-        }
+        if (xx[i])
+            ans++;
     }
-    cout<<sum<<' '<<wt;
+    cout << ans << ' ' << mann;
     return 0;
 }

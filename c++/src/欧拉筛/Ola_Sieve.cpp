@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+using namespace std;
 const int size = 10000;
 int p[size], v[size]; //p为记录质数,v为标记质数
 int cnt, n,t;
